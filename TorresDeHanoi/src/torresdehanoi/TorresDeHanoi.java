@@ -10,7 +10,7 @@ import static torresdehanoi.Logica.Resolver;
 
 /**
  *
- * @author andre
+ * @author Andrés Matta & Aaron Jara
  */
 public class TorresDeHanoi {
 
