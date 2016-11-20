@@ -7,7 +7,7 @@ package simulacion;
 
 /**
  *
- * @author andre
+ * @author Andrés Matta, Aaron Jara.
  */
 public class Posicion {
 
