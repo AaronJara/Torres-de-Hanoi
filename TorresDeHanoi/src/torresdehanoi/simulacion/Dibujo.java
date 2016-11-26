@@ -1,6 +1,6 @@
-package simulacion;
+package torresdehanoi.simulacion;
 
-import simulacion.Posicion;
+import torresdehanoi.simulacion.Posicion;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;

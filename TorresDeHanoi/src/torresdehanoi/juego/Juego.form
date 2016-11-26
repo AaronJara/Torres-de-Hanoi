@@ -310,7 +310,7 @@
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/sonrisa1p.png"/>
+          <Image iconType="3" name="/images/sonrisa1p.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -350,7 +350,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/escalon1a.gif"/>
+          <Image iconType="3" name="/images/escalon1a.gif"/>
         </Property>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
@@ -367,7 +367,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/escalon2a.gif"/>
+          <Image iconType="3" name="/images/escalon2a.gif"/>
         </Property>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
@@ -384,13 +384,13 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/escalon3a.gif"/>
+          <Image iconType="3" name="/images/escalon3a.gif"/>
         </Property>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="90" width="90" height="30"/>
+          <AbsoluteConstraints x="10" y="90" width="80" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -401,7 +401,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/escalon4a.gif"/>
+          <Image iconType="3" name="/images/escalon4a.gif"/>
         </Property>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
@@ -418,7 +418,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/escalon5c.gif"/>
+          <Image iconType="3" name="/images/escalon5c.gif"/>
         </Property>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
@@ -435,7 +435,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/escalon6f.gif"/>
+          <Image iconType="3" name="/images/escalon6f.gif"/>
         </Property>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
@@ -452,7 +452,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/escalon7.gif"/>
+          <Image iconType="3" name="/images/escalon7.gif"/>
         </Property>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
@@ -469,7 +469,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/escalon8d.gif"/>
+          <Image iconType="3" name="/images/escalon8d.gif"/>
         </Property>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>

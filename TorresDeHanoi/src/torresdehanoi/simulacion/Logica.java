@@ -1,6 +1,7 @@
-package simulacion;
+package torresdehanoi.simulacion;
 
 import java.util.Stack;
+import torresdehanoi.simulacion.VentanaSimulacion;
 
 public class Logica {
 

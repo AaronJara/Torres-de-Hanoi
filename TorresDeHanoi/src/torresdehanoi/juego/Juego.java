@@ -9,7 +9,7 @@
  * @author Andrés Matta, Aaron Jara
  *
  */
-package juego;
+package torresdehanoi.juego;
 
 import java.awt.event.*;
 import java.awt.*;
@@ -468,7 +468,7 @@ private class Parpadeo implements ActionListener { //clase
         getContentPane().add(jLabel6);
         jLabel6.setBounds(440, 444, 80, 30);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sonrisa1p.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sonrisa1p.png"))); // NOI18N
         getContentPane().add(jLabel7);
         jLabel7.setBounds(570, 360, 200, 190);
 
@@ -482,56 +482,56 @@ private class Parpadeo implements ActionListener { //clase
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/escalon1a.gif"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escalon1a.gif"))); // NOI18N
         jLabel10.setOpaque(true);
         getContentPane().add(jLabel10);
         jLabel10.setBounds(10, 30, 50, 30);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/escalon2a.gif"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escalon2a.gif"))); // NOI18N
         jLabel11.setOpaque(true);
         getContentPane().add(jLabel11);
         jLabel11.setBounds(10, 60, 60, 30);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/escalon3a.gif"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escalon3a.gif"))); // NOI18N
         jLabel12.setOpaque(true);
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(10, 90, 90, 30);
+        jLabel12.setBounds(10, 90, 80, 30);
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/escalon4a.gif"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escalon4a.gif"))); // NOI18N
         jLabel13.setOpaque(true);
         getContentPane().add(jLabel13);
         jLabel13.setBounds(10, 120, 100, 30);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/escalon5c.gif"))); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escalon5c.gif"))); // NOI18N
         jLabel14.setOpaque(true);
         getContentPane().add(jLabel14);
         jLabel14.setBounds(10, 150, 130, 30);
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/escalon6f.gif"))); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escalon6f.gif"))); // NOI18N
         jLabel15.setOpaque(true);
         getContentPane().add(jLabel15);
         jLabel15.setBounds(10, 180, 160, 30);
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/escalon7.gif"))); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escalon7.gif"))); // NOI18N
         jLabel16.setOpaque(true);
         getContentPane().add(jLabel16);
         jLabel16.setBounds(10, 210, 180, 30);
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/escalon8d.gif"))); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escalon8d.gif"))); // NOI18N
         jLabel17.setOpaque(true);
         getContentPane().add(jLabel17);
         jLabel17.setBounds(10, 240, 200, 30);
