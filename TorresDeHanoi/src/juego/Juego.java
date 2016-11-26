@@ -6,10 +6,7 @@
 /*
  * TorresHanoi.java
  *
- * Created on 05-jul-2010, 8:11:17
- * @author Rafael Espada Piña
- * @version 2012 (revisada)
- * @see Documentos adjuntos
+ * @author Andrés Matta, Aaron Jara
  *
  */
 package juego;
