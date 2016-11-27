@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;  // emitir ventanas emergentes.
 
 public class Juego extends javax.swing.JFrame {
     //Dimension del la pantalla
+    
     Dimension tamano = Toolkit.getDefaultToolkit().getScreenSize();
     //Cantidad de tiempo transcurrido por partida.
     int minutos = 0, segundos = 0, horas = 0;
@@ -71,13 +72,14 @@ public class Juego extends javax.swing.JFrame {
          * eso no se puede cambiar por códígo aunque podemos utilzar el codigo
          * siguiente para centrarlo en la pantalla si la resolución es mayor
          */
-
+     
         this.setSize((int) tamano.getWidth() / 2, (int) tamano.getHeight() / 2);
         //this.setLocation((int) tamano.getWidth() / 2 - this.getWidth() / 2, (int) tamano.getHeight() / 2 - this.getHeight() / 2);
 
         initComponents();
-
+        this.getContentPane().setBackground(Color.white);
         setResizable(false);// false--> no permite arrastrar margenes
+        
         new Cronometro(); //llama a la clase cronometro
         //new Parpadeo();
         //setDefaultCloseOperation(0);//cerrar con aspa X (esquina superior derecha)
@@ -395,7 +397,7 @@ private class Parpadeo implements ActionListener { //clase
         jMenuItem7 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Juego Torres de Hanoi versión julio 2012 ");
+        setTitle("Torres de Hanoi / Jugar ");
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
@@ -450,6 +452,7 @@ private class Parpadeo implements ActionListener { //clase
         getContentPane().add(jLabel2);
         jLabel2.setBounds(240, 410, 220, 29);
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Aciertos");
         getContentPane().add(jLabel3);
@@ -467,6 +470,7 @@ private class Parpadeo implements ActionListener { //clase
         getContentPane().add(jLabel5);
         jLabel5.setBounds(470, 420, 50, 20);
 
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 102, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -487,6 +491,7 @@ private class Parpadeo implements ActionListener { //clase
         getContentPane().add(jLabel9);
         jLabel9.setBounds(710, 10, 50, 50);
 
+        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.png"))); // NOI18N
@@ -494,6 +499,7 @@ private class Parpadeo implements ActionListener { //clase
         getContentPane().add(jLabel10);
         jLabel10.setBounds(120, 40, 50, 30);
 
+        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2.png"))); // NOI18N
@@ -501,6 +507,7 @@ private class Parpadeo implements ActionListener { //clase
         getContentPane().add(jLabel11);
         jLabel11.setBounds(120, 70, 60, 30);
 
+        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/3.png"))); // NOI18N
@@ -508,6 +515,7 @@ private class Parpadeo implements ActionListener { //clase
         getContentPane().add(jLabel12);
         jLabel12.setBounds(110, 100, 80, 30);
 
+        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4.png"))); // NOI18N
@@ -515,6 +523,7 @@ private class Parpadeo implements ActionListener { //clase
         getContentPane().add(jLabel13);
         jLabel13.setBounds(100, 130, 100, 30);
 
+        jLabel14.setBackground(new java.awt.Color(255, 255, 255));
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/5.png"))); // NOI18N
@@ -522,6 +531,7 @@ private class Parpadeo implements ActionListener { //clase
         getContentPane().add(jLabel14);
         jLabel14.setBounds(90, 160, 130, 30);
 
+        jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/6.png"))); // NOI18N
@@ -529,6 +539,7 @@ private class Parpadeo implements ActionListener { //clase
         getContentPane().add(jLabel15);
         jLabel15.setBounds(80, 190, 160, 30);
 
+        jLabel16.setBackground(new java.awt.Color(255, 255, 255));
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/7.png"))); // NOI18N
@@ -536,6 +547,7 @@ private class Parpadeo implements ActionListener { //clase
         getContentPane().add(jLabel16);
         jLabel16.setBounds(70, 220, 180, 30);
 
+        jLabel17.setBackground(new java.awt.Color(255, 255, 255));
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/8.png"))); // NOI18N
@@ -1209,7 +1221,8 @@ private class Parpadeo implements ActionListener { //clase
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new Juego().setVisible(true);
+                Juego j1 = new Juego();
+                j1.setVisible(true);
             }
         });
     }

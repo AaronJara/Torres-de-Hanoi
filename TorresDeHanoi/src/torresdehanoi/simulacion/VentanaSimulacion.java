@@ -1,12 +1,14 @@
 package torresdehanoi.simulacion;
 
 import java.awt.BorderLayout;
+import torresdehanoi.Principal;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
@@ -24,13 +26,16 @@ public class VentanaSimulacion extends JFrame implements ActionListener, ChangeL
     private JLabel labelInformacion;
     private JSpinner spinnerNroDiscos;
     private JButton botonIniciar;
+    private JButton botonSalir;
     private Dibujo dibujo;
+    Principal p1 = new Principal();
 
     public VentanaSimulacion() {
         super("Torres de Hanoi");
         configurarVentana();
         inicializarComponentes();
         this.setVisible(true);
+        this.setTitle("Torres de Hanoi / Simular");
     }
 
     private void configurarVentana() {
@@ -61,6 +66,12 @@ public class VentanaSimulacion extends JFrame implements ActionListener, ChangeL
         labelInformacion.setForeground(Color.red);
         labelInformacion.setVisible(false);
         panelInferior.add(labelInformacion);
+        
+        botonSalir = new JButton("Volver");
+        botonSalir.setActionCommand("Salir");
+        botonSalir.addActionListener(this);
+        panelInferior.add(botonSalir);
+
 
         add(panelInferior, BorderLayout.SOUTH);
         dibujo = new Dibujo(8, this);
@@ -69,8 +80,16 @@ public class VentanaSimulacion extends JFrame implements ActionListener, ChangeL
 
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
-        if (botonIniciar.getText().equals("Pausar")) {
+        if(e.getActionCommand().equals("Salir")){
+            int salir = JOptionPane.showConfirmDialog(null, "¿Realmente desea salir de la simulación?", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (salir==0) {
+                this.setVisible(false);
+                p1.setVisible(true);
+            }
+        }else{
+            if (botonIniciar.getText().equals("Pausar")) {
             dibujo.pausarAnimacion();
             botonIniciar.setText("Continuar");
         } else {
@@ -85,6 +104,8 @@ public class VentanaSimulacion extends JFrame implements ActionListener, ChangeL
                 botonIniciar.setText("Pausar");
             }
         }
+        }
+        
     }
 
     public void stateChanged(ChangeEvent e) {
