@@ -13,30 +13,35 @@ package torresdehanoi.juego;
 
 import java.awt.event.*;
 import java.awt.*;
-import javax.swing.Timer;
-import javax.swing.JOptionPane;  // el programa usa JOptionPane
+import javax.swing.Timer; // se utiliza en este caso para llevar el tiempo del juego.
+import javax.swing.JOptionPane;  // emitir ventanas emergentes.
 
 public class Juego extends javax.swing.JFrame {
-
+    //Dimension del la pantalla
     Dimension tamano = Toolkit.getDefaultToolkit().getScreenSize();
+    //Cantidad de tiempo transcurrido por partida.
     int minutos = 0, segundos = 0, horas = 0;
     int encender=0;
     Timer cronometro;
     Timer parpadeo;
-    static int[][] matrizTorres = new int[11][11];// matriz
+    //matriz que contiene la posicion de las pilas
+    static int[][] matrizTorres = new int[11][11];
+    //Posiciones de cada una de las torres
     int posicionTorre1 = 30;
     int posicionTorre2 = 280;
     int posicionTorre3 = 530;
     int i;
     int j;
     int b=0;
+    //Cantidad de escalones
     static int escalones = 3;
-    static int torre = 4;// 1,2,3
-    // tore desde y hasta
+    static int torre = 4;
+    // Posiciones inicial y final
     public int desde = 0;
     public int hasta = 0;
     int vertical = 200;
-    int contador; //solo hasta 1
+    //contador para el bucle
+    int contador; 
     // Almacenan valores para reponer
     int torreDesde;
     int guardaIDesde;
@@ -44,10 +49,13 @@ public class Juego extends javax.swing.JFrame {
     int torreHasta;
     int guardaIHasta;
     int guardaHasta;
-    int jugadasPosibles;//almacena resultado de formula matematica
-    // Contadores
+    //Cantidad de movimientos minimos posibles
+    int jugadasPosibles;
+    //Jugadas realzadas en la partida
     int jugadasRealizadas;
+    //Cantidad de aciertos totales
     int aciertos;
+    //Avisos emitidos
     int avisos;
     // coordenadas para colocar escalones
     int x;
@@ -371,14 +379,12 @@ private class Parpadeo implements ActionListener { //clase
         jLabel22 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem13 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -390,6 +396,7 @@ private class Parpadeo implements ActionListener { //clase
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Juego Torres de Hanoi versión julio 2012 ");
+        setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(null);
 
@@ -482,59 +489,59 @@ private class Parpadeo implements ActionListener { //clase
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escalon1a.gif"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.png"))); // NOI18N
         jLabel10.setOpaque(true);
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(10, 30, 50, 30);
+        jLabel10.setBounds(120, 40, 50, 30);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escalon2a.gif"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2.png"))); // NOI18N
         jLabel11.setOpaque(true);
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(10, 60, 60, 30);
+        jLabel11.setBounds(120, 70, 60, 30);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escalon3a.gif"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/3.png"))); // NOI18N
         jLabel12.setOpaque(true);
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(10, 90, 80, 30);
+        jLabel12.setBounds(110, 100, 80, 30);
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escalon4a.gif"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4.png"))); // NOI18N
         jLabel13.setOpaque(true);
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(10, 120, 100, 30);
+        jLabel13.setBounds(100, 130, 100, 30);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escalon5c.gif"))); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/5.png"))); // NOI18N
         jLabel14.setOpaque(true);
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(10, 150, 130, 30);
+        jLabel14.setBounds(90, 160, 130, 30);
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escalon6f.gif"))); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/6.png"))); // NOI18N
         jLabel15.setOpaque(true);
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(10, 180, 160, 30);
+        jLabel15.setBounds(80, 190, 160, 30);
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escalon7.gif"))); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/7.png"))); // NOI18N
         jLabel16.setOpaque(true);
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(10, 210, 180, 30);
+        jLabel16.setBounds(70, 220, 180, 30);
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/escalon8d.gif"))); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/8.png"))); // NOI18N
         jLabel17.setOpaque(true);
         getContentPane().add(jLabel17);
-        jLabel17.setBounds(10, 240, 200, 30);
+        jLabel17.setBounds(60, 250, 200, 30);
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel18.setText("Avisos");
@@ -558,19 +565,11 @@ private class Parpadeo implements ActionListener { //clase
         getContentPane().add(jLabel21);
         jLabel21.setBounds(400, 500, 120, 30);
 
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sonrisa2p.png"))); // NOI18N
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sonrisa2p.png"))); // NOI18N
         getContentPane().add(jLabel22);
         jLabel22.setBounds(570, 360, 210, 180);
 
         jMenu3.setText("Fichero");
-
-        jMenuItem8.setText("Ayuda");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem8);
 
         jMenuItem9.setText("Reglas del juego");
         jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
@@ -589,13 +588,13 @@ private class Parpadeo implements ActionListener { //clase
         jMenu3.add(jMenuItem10);
         jMenu3.add(jSeparator2);
 
-        jMenuItem11.setText("Acerca de...");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem8.setText("Ayuda");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
+                jMenuItem8ActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem11);
+        jMenu3.add(jMenuItem8);
         jMenu3.add(jSeparator1);
 
         jMenuItem12.setText("Salir");
@@ -605,14 +604,6 @@ private class Parpadeo implements ActionListener { //clase
             }
         });
         jMenu3.add(jMenuItem12);
-
-        jMenuItem13.setText("Lo que queda");
-        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem13ActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jMenuItem13);
 
         jMenuBar1.add(jMenu3);
 
@@ -921,15 +912,6 @@ private class Parpadeo implements ActionListener { //clase
         jLabel4.setText("" + jugadasPosibles);
 }//GEN-LAST:event_jMenuItem7ActionPerformed
 
-    /*
-     * El menu Fichero tiene varias opciones que se recogen a continuación
-     */
-    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "Juego:\n\n Torres de Hanoi\n\nVersion del año 2010\nProgramado por:\nRafael Espada Piña\n\nPrograma realizado en Java\nNecesita máquina virtual java(JVM)", "Créditos", JOptionPane.INFORMATION_MESSAGE);
-
-    }//GEN-LAST:event_jMenuItem11ActionPerformed
-
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null, "\nEl juego esta diseñado para su uso en la escuela.Pueden jugar con él desde \nalumnos de infantil hasta ESO o incluso adultos.\n\nEmpieza mostrando una torre de dos escalones. Podemos cambiar el número de escalones\nen el Menu Escalones.Según el número de escalones con que queramos jugar el juego \nse hace más complejo.\n\nHay que montar la torre que aparece en la primera base en la base dos o en la base tres.\nEl programa funciona pulsando la base de donde queremos mover un escalón y la base\na donde queremos llevarlo. Pulsamos luego sobre el botón Mover para realizar\nel desplazamiento, ver Menú  Reglas del Juego\n\nLo que vemos en pantalla:\n-Jugadas posibles: según el número de Escalones el programa indica el número mínimo \n  de jugadas  posibles.\n-Jugadas realizadas: Acumula jugadas realizadas en las que el jugador consigue\n  desplazar un escalón desde una base a otra. Ayuda a valorar la habilidad del jugador\n-Aciertos: número de veces que el jugador logra montar los escalones de una torre\n  correctamente en una base distinta de la '1'. El programa da un mensaje de\n  felicitación y muestra una cara sonriente\n-Avisos: información sobre el número de avisos que se producen cuando realizamos \n  una jugada incorrecta, también muestra una cara triste:\n  a) Pulsamos una base vacía\n  b) Pulsamos solo una base llena (con uno o mas escalones) y luego la tecla Jugar\n  c) Pulsamos la misma base (llena) dos veces seguidas y luego Jugar\n  d) Si intentamos poner un escalón grande encima de uno pequeño\n  e) Si pulsamos la tecla Mover sin indicar 'desde' y 'hasta' donde desplazamos el escalón \n-Tiempo: Cronómetro que da el tiempo que se tarda en realizar cada torre, se pone a '0'\n  al empezar un juego nuevo\n-Esquina superior derecha: Vemos las bases de torre pulsadas. En caso de error parpadean\n y se muestran en rojo durante unos segundos (suena campanita al finalizar).", "Ayuda", JOptionPane.INFORMATION_MESSAGE);
@@ -952,12 +934,6 @@ private class Parpadeo implements ActionListener { //clase
         JOptionPane.showMessageDialog(null, "Historia del juego Torres de Hanoi \n\nLa información que viene más abajo es sacada de Internet.\nParece que era un juego conocido en la India aunque fué difundido en Europa a partir de 1883\npor el matemático francés Edouard Lucas.\nEstá asociado a leyendas como que en un templo indú había un juego que tenía una torre de 64\nescalones en una de sus varillas y había que pasar esa torre a cualquiera de las otras dos \ncumpliendo las reglas (ver Menú Reglas del Juego).\nEn el caso de 64 escalones se ha calculado que haciendo una jugada cada segundo se terminaría \nen algo menos de 585 mil millones de años (si no tienes ningún fallo ).", "Historia y origen", JOptionPane.INFORMATION_MESSAGE);
 
     }//GEN-LAST:event_jMenuItem10ActionPerformed
-
-    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(null, "1.- Dar mivimiento a los escalones que desplazamos  \n2.-Quizá quitar avisos y mostrarlos en jLabel más resumidos\n3.-Crear clases nuevas y situar en ellas parte del código (mover, centrar torre...)\n4.-Crear ficheros .gif de gráficos con escalones mas 'aparentes' ", "Lo que queda por hacer", JOptionPane.INFORMATION_MESSAGE);
-
-    }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     /*
      * El metodo 'colocarEscalones' es el que realiza el cambio de escalones
@@ -1269,9 +1245,7 @@ private class Parpadeo implements ActionListener { //clase
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
