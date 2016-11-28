@@ -61,7 +61,7 @@ public class Juego extends javax.swing.JFrame {
     int avisos;
     // coordenadas para colocar escalones
     int x;
-    int y;
+    int y = 380; // coordenada horizontal para botones y labels 
     int a;// situa verticalmete la torre que movemos (define para cada escalon una posicion)
     //int b;// define una posicion en horizontal para que cada escalon quede centrado en su torre ==> no hay manera
     double pixelVertical;
@@ -81,6 +81,8 @@ public class Juego extends javax.swing.JFrame {
         this.getContentPane().setBackground(Color.white);
         setResizable(false);// false--> no permite arrastrar margenes
         setLocationRelativeTo(null);// Coloca el JFrame en el centro de la pantalla.
+        Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/logoApp.png"));//icono de la parte superior del JFrame
+        setIconImage(icon);
         
         new Cronometro(); //llama a la clase cronometro
         //new Parpadeo();
@@ -93,8 +95,8 @@ public class Juego extends javax.swing.JFrame {
          */
         jugadasPosibles = (2 * 2) - 1;
         jLabel4.setText("" + jugadasPosibles);
-        jLabel7.setVisible(false);// oculta la jlabel con cara alegre
-        jLabel22.setVisible(false);// oculta la jlabel con cara triste
+        jLabel7.setVisible(false);// oculta la jlabel de exito
+        jLabel22.setVisible(false);// oculta la jlabel de fallido
 
         //lamaa a estos metodos
         mostrarBaseTorres();
@@ -103,16 +105,9 @@ public class Juego extends javax.swing.JFrame {
     }
 
     /*
-     * Es interesante porque es un ejemplo de como funciona Timer
-     * (javax.swing.Timer). Timer es una clase capaz de llamar al mÉtodo que
-     * este definido con 'actionPerformed' colocado dentro de la clae definida
-     * con 'ActionListener'. A cada intervalo fijo de tiempo especificado en
-     * milisegundos 'new Timer(1000, this)', en décimas (10) de segundos o en
-     * segundos (1) se ejecuta una acción. En el caso de esta clase cada segundo
-     * imprime el cronometro, es decir lo actualiza cada segundo.
-     *
-     * También se puede decir que 'ActionListener' es una interfaz que sirve
-     * para que el mismo jpanel (o jframe) escuche el evento timer
+     * Este método se encarga de actualizar el JLabel del cronómetro cada
+     * segundo, haciendo que se pueda llevar el tiempo de duración de la 
+     * partida.
      */
     private class Cronometro implements ActionListener { //clase
         //Timer da milisegundos, pero aqui hacemos que funcione como cronómetro
@@ -145,16 +140,13 @@ public class Juego extends javax.swing.JFrame {
         }
         
     }
-    /*
-     * En caso de movimiento de escalones erróneo entra en funcionamiento esta
-     * clase tras pulsar Mover.
-     * 
-     * En la esquina superior derecha hay dos jLabel que indican las bases de
-     * las torres pulsadas. Si se produce un error los numeros cambian a color
-     * rojo y parpadean durante varios segundos. Despues vuelven a su color 
-     * el negro. 
+    /* 
+     * El método parpadeo se pone en funcionamiento en cuanto se da click al 
+     * botón mover y se cometé algun error, como por ejemplo pasar un escalón
+     * a uno más pequeño. Hacieno así que el JLabel de esquina superior derecha
+     * cambie de color y parpadee. 
      */
-private class Parpadeo implements ActionListener { //clase
+    private class Parpadeo implements ActionListener { //clase
         
         private Timer parpadeo = new Timer(10, this);
         //metodos de la clase
@@ -170,15 +162,12 @@ private class Parpadeo implements ActionListener { //clase
             b++;
             jLabel8.setForeground(Color.red);//texto en rojo
             jLabel9.setForeground(Color.red);
-            //System.out.println("texto en rojo"+b);  
             if (encender == 50) { //menor de 25 mas rapido, mayor mas lento
-                 System.out.println("encender= "+encender); 
                 jLabel8.setVisible(false);
                 jLabel9.setVisible(false);
 
             } else {
-                if (encender == 100) {
-                    System.out.println("encender= "+encender); 
+                if (encender == 100) { 
                     jLabel8.setVisible(true);
                     jLabel9.setVisible(true);
                     encender = 0;
@@ -193,7 +182,7 @@ private class Parpadeo implements ActionListener { //clase
                 jLabel8.setForeground(Color.black);
                 jLabel9.setForeground(Color.black);
             }
-            System.out.println("encender= "+encender);   
+            //System.out.println("encender= "+encender);   
             
         }
         
@@ -224,32 +213,18 @@ private class Parpadeo implements ActionListener { //clase
                 matrizTorres[i][1] = i;
             }
         }
-        mostrarMatriz();
-    }
-
-    /*
-     * Este módulo solo imprime en pantalla en modo texto el contenido de la
-     * matrizTorres[i][j] Permite hacer un seguimiento en modo texto de los
-     * movimientos realizados y que escalones tenemos en cada torre.
-     */
-    public void mostrarMatriz() {
-        for (i = 1; i < escalones; i++) {
-            for (j = 1; j < torre; j++) {
-                System.out.print("               " + matrizTorres[i][j]);
-            }
-            System.out.println();
-        }
-        System.out.println("          ==========      ==========       =========");
-        System.out.println("               1               2               3");
-        System.out.println("          ------------------------------------------");
         modoGrafico();
     }
 
+    /*
+     * Se posicionan los botones que están debajo de cada escalón
+     */
+
     public void mostrarBaseTorres() {
         //1.- Coodenada vertical 2.- Coordinada horizontal 3.- ancho del objeto 4.-Alto del objeto 
-        jButton1.setBounds(30, 279, 220, 80);// 
-        jButton2.setBounds(280, 279, 220, 80);// Botones: eje x e y para situarlos (280, 360,)
-        jButton3.setBounds(530, 279, 220, 80);// y largo y alto (220, 60)
+        jButton1.setBounds(30, 455, 220, 80);// 
+        jButton2.setBounds(280, 455, 220, 80);// Botones: eje x e y para situarlos (280, 360,)
+        jButton3.setBounds(530, 455, 220, 80);// y largo y alto (220, 60)
     }
 
     /*
@@ -263,7 +238,7 @@ private class Parpadeo implements ActionListener { //clase
 
         if (escalones == 3) {// por defecto carga una torre de dos escalones
 
-            y = 218;// los coloca verticalmente en esa posición (x=30 (posicionTorre1));
+            y = 200;// los coloca verticalmente en esa posición (x=30 (posicionTorre1));
 
             jLabel12.setVisible(false);
             jLabel13.setVisible(false);
@@ -299,28 +274,28 @@ private class Parpadeo implements ActionListener { //clase
                 }
 
                 if (i == 1) {
-                    a = 0;
+                    a = 170;
                 }
                 if (i == 2) {
-                    a = 30;
+                    a = 200;
                 }
                 if (i == 3) {
-                    a = 60;
+                    a = 230;
                 }
                 if (i == 4) {
-                    a = 90;
+                    a = 260;
                 }
                 if (i == 5) {
-                    a = 120;
+                    a = 290;
                 }
                 if (i == 6) {
-                    a = 150;
+                    a = 320;
                 }
                 if (i == 7) {
-                    a = 180;
+                    a = 350;
                 }
                 if (i == 8) {
-                    a = 210;
+                    a = 380;
                 }
                 /*
                  * Imprime los escalones de la primera torre.
@@ -382,6 +357,7 @@ private class Parpadeo implements ActionListener { //clase
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -414,7 +390,7 @@ private class Parpadeo implements ActionListener { //clase
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(60, 280, 210, 70);
+        jButton1.setBounds(20, 500, 210, 70);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jButton2.setText("2");
@@ -424,7 +400,7 @@ private class Parpadeo implements ActionListener { //clase
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(290, 280, 210, 70);
+        jButton2.setBounds(250, 500, 210, 70);
 
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jButton3.setText("3");
@@ -434,45 +410,45 @@ private class Parpadeo implements ActionListener { //clase
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(520, 280, 210, 70);
+        jButton3.setBounds(480, 500, 210, 70);
 
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jButton4.setText("Mover");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1480379641_arrow_down.png"))); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(70, 370, 160, 110);
+        jButton4.setBounds(30, 120, 160, 70);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Movimientos mínimos");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(240, 400, 180, 30);
+        jLabel1.setBounds(210, 50, 180, 30);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setText("Movimientos realizadas");
+        jLabel2.setText("Movimientos realizados");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(240, 430, 220, 20);
+        jLabel2.setBounds(210, 80, 220, 20);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Partidas ganadas");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(240, 500, 190, 30);
+        jLabel3.setBounds(210, 150, 190, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("0");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(450, 400, 40, 20);
+        jLabel4.setBounds(420, 50, 40, 20);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("0");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(440, 430, 50, 20);
+        jLabel5.setBounds(410, 80, 50, 20);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -481,27 +457,26 @@ private class Parpadeo implements ActionListener { //clase
         jLabel6.setText("0");
         jLabel6.setOpaque(true);
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(410, 500, 80, 30);
+        jLabel6.setBounds(380, 150, 80, 30);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sucess.png"))); // NOI18N
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(560, 370, 200, 190);
+        jLabel7.setBounds(540, -10, 200, 190);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(650, 10, 50, 50);
+        jLabel8.setBounds(550, 170, 50, 50);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(710, 10, 50, 50);
+        jLabel9.setBounds(680, 170, 50, 50);
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.png"))); // NOI18N
-        jLabel10.setOpaque(true);
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(120, 40, 50, 30);
+        jLabel10.setBounds(90, 260, 50, 30);
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -509,7 +484,7 @@ private class Parpadeo implements ActionListener { //clase
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2.png"))); // NOI18N
         jLabel11.setOpaque(true);
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(120, 70, 60, 30);
+        jLabel11.setBounds(90, 290, 60, 30);
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -517,7 +492,7 @@ private class Parpadeo implements ActionListener { //clase
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/3.png"))); // NOI18N
         jLabel12.setOpaque(true);
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(110, 100, 80, 30);
+        jLabel12.setBounds(80, 320, 80, 30);
 
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -525,7 +500,7 @@ private class Parpadeo implements ActionListener { //clase
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4.png"))); // NOI18N
         jLabel13.setOpaque(true);
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(100, 130, 100, 30);
+        jLabel13.setBounds(70, 350, 100, 30);
 
         jLabel14.setBackground(new java.awt.Color(255, 255, 255));
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -533,7 +508,7 @@ private class Parpadeo implements ActionListener { //clase
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/5.png"))); // NOI18N
         jLabel14.setOpaque(true);
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(90, 160, 130, 30);
+        jLabel14.setBounds(60, 380, 130, 30);
 
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -541,7 +516,7 @@ private class Parpadeo implements ActionListener { //clase
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/6.png"))); // NOI18N
         jLabel15.setOpaque(true);
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(80, 190, 160, 30);
+        jLabel15.setBounds(50, 410, 160, 30);
 
         jLabel16.setBackground(new java.awt.Color(255, 255, 255));
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -549,7 +524,7 @@ private class Parpadeo implements ActionListener { //clase
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/7.png"))); // NOI18N
         jLabel16.setOpaque(true);
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(70, 220, 180, 30);
+        jLabel16.setBounds(40, 440, 180, 30);
 
         jLabel17.setBackground(new java.awt.Color(255, 255, 255));
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -557,43 +532,53 @@ private class Parpadeo implements ActionListener { //clase
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/8.png"))); // NOI18N
         jLabel17.setOpaque(true);
         getContentPane().add(jLabel17);
-        jLabel17.setBounds(60, 250, 200, 30);
+        jLabel17.setBounds(30, 470, 200, 30);
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel18.setText("Avisos");
         getContentPane().add(jLabel18);
-        jLabel18.setBounds(240, 450, 160, 30);
+        jLabel18.setBounds(210, 100, 160, 30);
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel19.setText("0");
         getContentPane().add(jLabel19);
-        jLabel19.setBounds(440, 450, 50, 30);
+        jLabel19.setBounds(410, 100, 50, 30);
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel20.setText("Tiempo en segundos");
         getContentPane().add(jLabel20);
-        jLabel20.setBounds(240, 370, 170, 30);
+        jLabel20.setBounds(210, 20, 170, 30);
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel21.setText("0");
         getContentPane().add(jLabel21);
-        jLabel21.setBounds(370, 370, 120, 30);
+        jLabel21.setBounds(340, 20, 120, 30);
 
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fail.png"))); // NOI18N
         getContentPane().add(jLabel22);
-        jLabel22.setBounds(560, 370, 210, 180);
+        jLabel22.setBounds(540, -10, 210, 180);
 
         jButton6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton6.setText("Volver");
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1480379872_Home01.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton6);
-        jButton6.setBounds(70, 500, 160, 40);
+        jButton6.setBounds(30, 10, 160, 50);
+
+        jButton7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1480380446_Eraser.png"))); // NOI18N
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7);
+        jButton7.setBounds(30, 60, 160, 50);
 
         jMenu4.setText("Escalones");
 
@@ -751,7 +736,7 @@ private class Parpadeo implements ActionListener { //clase
         jugadasRealizadas = jugadasRealizadas + 1;
         jLabel5.setText("" + jugadasRealizadas);
         colocarEscalones();
-        mostrarMatriz();
+        modoGrafico();
         desde = 0;
         jLabel8.setText("");
         hasta = 0;
@@ -920,6 +905,15 @@ private class Parpadeo implements ActionListener { //clase
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+            desde = 0;
+            hasta = 0;
+            //desde=0;
+            jLabel8.setText("");
+            //hasta=0;
+            jLabel9.setText("");
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /*
      * El metodo 'colocarEscalones' es el que realiza el cambio de escalones
      * entre las tres torres. Toma el escalón de la base que pulsemos primero
@@ -1061,7 +1055,7 @@ private class Parpadeo implements ActionListener { //clase
             jLabel22.setVisible(true);//Se muestra una cara triste
             new Parpadeo();
             Object[] opciones = {"Aceptar"};
-            JOptionPane.showOptionDialog(null, "            AVISO-1\n\n Intentas mover un escalón \n desde la torre " + desde + " hasta la torre " + hasta, "ATENCIÓN: Se ha producido un error",
+            JOptionPane.showOptionDialog(null, "            AVISO\n\n Intentas mover un escalón \n desde la torre " + desde + " hasta la torre " + hasta, "ATENCIÓN: Movimiento incorrecto",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
                     null, opciones, opciones[0]);
 
@@ -1096,7 +1090,7 @@ private class Parpadeo implements ActionListener { //clase
             jLabel22.setVisible(true);//Se muestra una cara triste
             new Parpadeo();
             Object[] opciones = {"Aceptar"};
-            JOptionPane.showOptionDialog(null, "            AVISO\n\n El nuevo escalón es más grande que el que ya hay \n en la torre donde desea ponerlo", "ATENCIÓN: Se ha producido un error",
+            JOptionPane.showOptionDialog(null, "            AVISO\n\n El nuevo escalón es más grande que el que ya hay \n en la torre donde desea ponerlo", "ATENCIÓN: Movimiento incorrecto",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
                     null, opciones, opciones[0]);
             
@@ -1118,7 +1112,7 @@ private class Parpadeo implements ActionListener { //clase
             jLabel22.setVisible(true);//Se muestra una cara triste
             new Parpadeo();
             Object[] opciones = {"Aceptar"};
-            JOptionPane.showOptionDialog(null, "            AVISO-2\n\n Intentas mover un escalón \n desde la torre " + desde + " hasta la torre " + hasta, "ATENCIÓN: Se ha producido un error",
+            JOptionPane.showOptionDialog(null, "            AVISO\n\n Intentas mover un escalón \n desde la torre " + desde + " hasta la torre " + hasta, "ATENCIÓN: Movimiento correcto",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
                     null, opciones, opciones[0]);
 
@@ -1140,7 +1134,7 @@ private class Parpadeo implements ActionListener { //clase
             jLabel22.setVisible(true);//Se muestra una cara triste
             new Parpadeo();
             Object[] opciones = {"Aceptar"};
-            JOptionPane.showOptionDialog(null, "            AVISO-3\n\n Intentas mover un escalón \n desde la torre " + desde + " hasta la torre " + hasta, "ATENCIÓN: JUGAR Se ha producido un error",
+            JOptionPane.showOptionDialog(null, "            AVISO\n\n Intentas mover un escalón \n desde la torre " + desde + " hasta la torre " + hasta, "ATENCIÓN: Movimiento incorrecto",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
                     null, opciones, opciones[0]);
 
@@ -1170,7 +1164,7 @@ private class Parpadeo implements ActionListener { //clase
                 jLabel6.setText("" + aciertos);
                 jLabel7.setVisible(true);// muestra una cara alegre
                 Object[] opciones = {"Aceptar"};
-                JOptionPane.showOptionDialog(null, "================================\n==                                                                 ==\n==                    FELICIDADES                     ==\n==                                                                 ==\n================================", "ATENCIÓN: Has teminado la torre",
+                JOptionPane.showOptionDialog(null, "¡Felicitaciones, has ganado el juego! \n\n Duración total:  " + horas + ":" + minutos + ":" + segundos + "\n Movimientos realizados: " + jugadasRealizadas + "\nAvisos emitidos: " + avisos + "\n\nPartidas ganadas: " + aciertos , "ATENCIÓN: Juego completado",
                         JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
                         null, opciones, opciones[0]);
 
@@ -1206,6 +1200,7 @@ private class Parpadeo implements ActionListener { //clase
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

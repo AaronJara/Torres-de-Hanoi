@@ -1,6 +1,5 @@
 package torresdehanoi.simulacion;
 
-import torresdehanoi.simulacion.Posicion;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -18,22 +17,22 @@ import javax.swing.JPanel;
  */
 public class Dibujo extends JPanel implements ActionListener {
 
-    private int nroFichas;
+    private final int nroFichas;
     private int[] topes;
     private int movimientoActual;
     private Image[] fichas;
     private int x, y;
     private int ficha;
     private int nm;
-    private Movimiento[] movimientos;
-    private Posicion[] posiciones;
-    private Timer timer;
-    private boolean movimientoCompletado;
+    private Movimiento[] movimientos; // De la clase movimientos.
+    private Posicion[] posiciones; // De la clase posiciones.
+    private final Timer timer; // Necesario para la animación.
+    private boolean movimientoCompletado; 
     private int paso;
-    private static final int VELOCIDAD = 0;
-    private static final int LIMITE_FICHAS = 8;
-    private static final int LIMITE_TORRES = 3;
-    private VentanaSimulacion nucleo;
+    private static final int VELOCIDAD = 0; // Velocidad de la animación
+    private static final int LIMITE_FICHAS = 8; //Limite máximo de fichas
+    private static final int LIMITE_TORRES = 3; // Cantidad de torres
+    private final VentanaSimulacion nucleo; // del JFrame principal
 
     public Dibujo(int nroFichas, VentanaSimulacion nucleo) {
         this.nroFichas = nroFichas;
@@ -78,6 +77,11 @@ public class Dibujo extends JPanel implements ActionListener {
         paso = 1;
     }
 
+    /**
+     *Dibuja las torres.
+     * @param g
+     */
+    @Override
     public void paint(Graphics g) {
         super.paint(g);
         Graphics2D g2 = (Graphics2D) g;
@@ -91,6 +95,13 @@ public class Dibujo extends JPanel implements ActionListener {
         g.dispose();
     }
 
+    /**
+     * Algoritmo recursivo utilizado para resolver las torres
+     * @param n
+     * @param origen
+     * @param temporal
+     * @param destino
+     */
     public void algoritmoHanoi(int n, int origen, int temporal, int destino) {
         if (n == 0) {
             return;
@@ -101,6 +112,12 @@ public class Dibujo extends JPanel implements ActionListener {
         algoritmoHanoi(n - 1, temporal, origen, destino);
     }
 
+    /**
+     * Encargada de asignar valores de los movimientos de los escalones por medio
+     * de los métodos para las coordendas.
+     * @param e
+     */
+    @Override
     public void actionPerformed(ActionEvent e) {
         switch (paso) {
             case 1: // mover hacia arriba
@@ -159,6 +176,12 @@ public class Dibujo extends JPanel implements ActionListener {
         repaint();
     }
 
+    /**
+     * Coordenadas verticales del JPanel
+     * @param ficha
+     * @param torre
+     * @return
+     */
     public static int posicionXFicha(int ficha, int torre) {
         int k = (torre - 1) * 200;
         switch (ficha) {
@@ -182,6 +205,11 @@ public class Dibujo extends JPanel implements ActionListener {
         return 0;
     }
 
+    /**
+     * Coordenadas horizontales del JPanel
+     * @param nivel
+     * @return
+     */
     public static int posicionYFicha(int nivel) {
         switch (nivel) {
             case 1:
@@ -204,10 +232,16 @@ public class Dibujo extends JPanel implements ActionListener {
         return 0;
     }
 
+    /**
+     *Inicia la animación de la simulación
+     */
     public void iniciarAnimacion() {
         timer.restart();
     }
 
+    /**
+     *Permitepausar la animación
+     */
     public void pausarAnimacion() {
         timer.stop();
     }
