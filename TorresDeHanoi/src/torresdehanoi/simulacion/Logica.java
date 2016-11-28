@@ -17,7 +17,7 @@ public class Logica {
             return;
         }
         algoritmoHanoi(n - 1, origen, destino, temporal);
-        System.out.println("Mover " + n + " de la torre " + origen + " a la torre " + destino + ".");
+        // System.out.println("Mover " + n + " de la torre " + origen + " a la torre " + destino + ".");
         algoritmoHanoi(n - 1, temporal, origen, destino);
     }
 
